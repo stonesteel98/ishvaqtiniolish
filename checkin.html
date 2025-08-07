@@ -1,0 +1,18 @@
+{% extends 'monitor/base.html' %}
+
+{% block title %}Check In{% endblock %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label class="form-label">Ismingizni tanlang:</label>
+        <select name="employee_id" class="form-select">
+            {% for employee in employees %}
+                <option value="{{ employee.id }}">{{ employee.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-success">🟢 Ishga kirish (Check In)</button>
+</form>
+{% endblock %}
